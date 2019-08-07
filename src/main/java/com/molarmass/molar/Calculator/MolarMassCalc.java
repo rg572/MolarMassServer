@@ -1,6 +1,6 @@
-package com.molarmass.molar.calculator;
+package com.molarmass.molar.Calculator;
 
-import com.molarmass.molar.model.Element;
+import com.molarmass.molar.Model.Element;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,9 +40,9 @@ public class MolarMassCalc {
                 int multiplier = 1;
                 if(!m.group(4).equals("")){
                     multiplier = Integer.parseInt(m.group(4));
-                    mass*= multiplier;
-                    mass+= outsideParen.pop();
                 }
+                mass*= multiplier;
+                mass+= outsideParen.pop();
             }
             else{
                 Element element = elemMap.get(m.group(2));
@@ -57,6 +57,9 @@ public class MolarMassCalc {
             }
             index = index + group.length();
             m.region(index, formula.length());
+        }
+        if(!outsideParen.empty()){
+            throw new IllegalArgumentException();
         }
         return mass;
     }

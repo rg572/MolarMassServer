@@ -1,4 +1,4 @@
-package com.molarmass.molar.model;
+package com.molarmass.molar.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
